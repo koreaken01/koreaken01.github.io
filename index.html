@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>산지경매사 모의 프로그램</title>
+    
+    <!-- 외부 CSS 파일 -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- ============================================= -->
+    <!-- 초기 설정 화면 -->
+    <!-- ============================================= -->
+    <div class="setup-container" id="setupScreen">
+        <h1>🐟 산지경매사 모의 프로그램</h1>
+        <div class="input-group">
+            <label for="electronicCount">전자식 문제 수:</label>
+            <input type="number" id="electronicCount" min="1" max="20" value="2">
+        </div>
+        <div class="input-group">
+            <label for="manualCount">수지식 문제 수:</label>
+            <input type="number" id="manualCount" min="1" max="20" value="2">
+        </div>
+        <button class="start-btn" onclick="startSimulation()">시작하기</button>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- 메인 경매 화면 -->
+    <!-- ============================================= -->
+    <div class="main-container" id="mainScreen">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo">🌊</div>
+                <div class="title">한국해양수산연수원</div>
+            </div>
+            <div class="timer-display" id="timer">15</div>
+            <div class="user-info" id="userInfo">응시번호: 1023</div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Left Panel -->
+            <div class="left-panel">
+                <div class="instruction-text">
+                    생산지, 출하자, 품목, 등급 단위 수량을 호창하고<br>
+                    낙찰/유찰을 결정하여 선택하고 호창하십시오
+                </div>
+                <div class="product-label" id="productLabel">수지식 <span id="questionNumber">1</span></div>
+                <div class="image-container">
+                    <img class="product-image" id="productImage" src="" alt="상품 이미지">
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="right-panel">
+                <!-- Info Table -->
+                <div class="info-table">
+                    <div class="header-row">
+                        <div>구분</div>
+                        <div id="modeDisplay">상품확인</div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">생산지</div>
+                        <div id="productionArea">전남 해남</div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">출하자</div>
+                        <div id="shipper">권 우 준</div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">품 목</div>
+                        <div id="itemName"></div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">등 급</div>
+                        <div id="grade">B++</div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">단 위</div>
+                        <div id="unit">5kg</div>
+                    </div>
+                    <div class="data-row">
+                        <div class="label">수 량</div>
+                        <div id="quantity">5Box</div>
+                    </div>
+                </div>
+
+                <!-- Bid Info -->
+                <div class="bid-info">
+                    <span>내정가</span>
+                    <span class="price" id="bidPrice">₩85,000</span>
+                </div>
+
+                <!-- 수지식 모드 손가락 표시 -->
+                <div class="finger-section" id="fingerSection" style="display: none;">
+                    <div class="finger-grid" id="fingerGrid">
+                        <!-- 손가락 이미지들이 여기에 동적으로 추가됩니다 -->
+                    </div>
+                </div>
+
+                <!-- 전자식 모드 테이블 -->
+                <div class="manual-table" id="manualSection" style="display: none;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th width="20%"></th>
+                                <th width="40%">중도매인번호</th>
+                                <th width="40%">응찰 가격</th>
+                            </tr>
+                        </thead>
+                        <tbody id="manualTableBody">
+                            <!-- 동적으로 생성됩니다 -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="action-btn bid-btn" onclick="handleBid()">
+                        낙찰 <span class="btn-key">Enter</span>
+                    </button>
+                    <button class="action-btn pass-btn" onclick="handlePass()">
+                        유찰 <span class="btn-key">F12</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- 품목 표시 모달 -->
+    <!-- ============================================= -->
+    <div class="item-modal" id="itemModal">
+        <div class="item-display">
+            <h2>정답</h2>
+            <div class="item-name" id="modalItemName"></div>
+            <div class="item-scientific" id="modalScientificName"></div>
+        </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- 결과 화면 -->
+    <!-- ============================================= -->
+    <div class="result-container" id="resultScreen">
+        <h2>🎯 모의 시험 완료</h2>
+        <div class="result-summary">
+            <div class="result-row">
+                <span class="label">전자식 문제:</span>
+                <span class="value" id="resultElectronic"></span>
+            </div>
+            <div class="result-row">
+                <span class="label">수기식 문제:</span>
+                <span class="value" id="resultManual"></span>
+            </div>
+            <div class="result-row">
+                <span class="label">총 문제 수:</span>
+                <span class="value" id="resultTotal"></span>
+            </div>
+            <div class="result-row">
+                <span class="label">낙찰 처리:</span>
+                <span class="value" id="resultBid"></span>
+            </div>
+            <div class="result-row">
+                <span class="label">유찰 처리:</span>
+                <span class="value" id="resultPass"></span>
+            </div>
+        </div>
+        <button class="restart-btn" onclick="location.reload()">다시 시작</button>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- JavaScript 파일들 -->
+    <!-- ============================================= -->
+    <!-- 순서 중요: 의존성 순서대로 로드 -->
+    <script src="js/data.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
