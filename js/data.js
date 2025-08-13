@@ -11,6 +11,22 @@ class DataManager {
             'finger_4.png', 'finger_5.png', 'finger_6.png',
             'finger_7.png', 'finger_8.png', 'finger_9.png'
         ];
+        
+        // GitHub Pages에서 안정적인 경로 처리를 위한 base URL 설정
+        this.baseUrl = this.getBaseUrl();
+    }
+    
+    /**
+     * 현재 페이지의 base URL을 가져오는 함수
+     */
+    getBaseUrl() {
+        // GitHub Pages의 경우 repository name이 URL에 포함될 수 있음
+        const pathSegments = window.location.pathname.split('/');
+        if (pathSegments.length > 1 && pathSegments[1] !== '') {
+            // repository name이 있는 경우
+            return '/' + pathSegments[1] + '/';
+        }
+        return './';
     }
 
     /**
@@ -18,7 +34,9 @@ class DataManager {
      */
     async loadFishData() {
         try {
-            const response = await fetch('img/seafood_images.csv');
+            const csvUrl = this.baseUrl + 'img/seafood_images.csv';
+            console.log('CSV 파일 로드 시도:', csvUrl);
+            const response = await fetch(csvUrl);
             const csvText = await response.text();
             const lines = csvText.split('\n');
             
@@ -32,7 +50,14 @@ class DataManager {
                         const images = [];
                         for (let j = 2; j < parts.length && j < 7; j++) {
                             if (parts[j] && parts[j].trim()) {
-                                images.push(parts[j].trim());
+                                // 이미지 경로 정규화
+                                let imagePath = parts[j].trim();
+                                if (!imagePath.startsWith('./') && !imagePath.startsWith('/') && !imagePath.startsWith('http')) {
+                                    imagePath = this.baseUrl + imagePath;
+                                } else if (imagePath.startsWith('./')) {
+                                    imagePath = this.baseUrl + imagePath.substring(2);
+                                }
+                                images.push(imagePath);
                             }
                         }
                         
@@ -49,8 +74,10 @@ class DataManager {
                 }
             }
             console.log(`${this.fishItems.length}개 품목 로드 완료`);
+            console.log('Base URL:', this.baseUrl);
         } catch (error) {
             console.error('CSV 로드 실패:', error);
+            console.log('Base URL:', this.baseUrl);
             // 기본 데이터 사용
             this.loadDefaultData();
         }
@@ -65,76 +92,76 @@ class DataManager {
                 name: "갈치", 
                 scientific: "Trichiurus lepturus", 
                 images: [
-                    "img/seafood/1_갈치_1.jpg",
-                    "img/seafood/1_갈치_2.jpg",
-                    "img/seafood/1_갈치_3.jpg",
-                    "img/seafood/1_갈치_4.jpg",
-                    "img/seafood/1_갈치_5.png"
+                    this.baseUrl + "img/seafood/1_갈치_1.jpg",
+                    this.baseUrl + "img/seafood/1_갈치_2.jpg",
+                    this.baseUrl + "img/seafood/1_갈치_3.jpg",
+                    this.baseUrl + "img/seafood/1_갈치_4.jpg",
+                    this.baseUrl + "img/seafood/1_갈치_5.png"
                 ]
             },
             { 
                 name: "고등어", 
                 scientific: "Scomber japonicus", 
                 images: [
-                    "img/seafood/3_고등어.png",
-                    "img/seafood/3_갈고등어.png",
-                    "img/seafood/3_망치고등어.png",
-                    "img/seafood/3_줄무늬고등어.png"
+                    this.baseUrl + "img/seafood/3_고등어.png",
+                    this.baseUrl + "img/seafood/3_갈고등어.png",
+                    this.baseUrl + "img/seafood/3_망치고등어.png",
+                    this.baseUrl + "img/seafood/3_줄무늬고등어.png"
                 ]
             },
             { 
                 name: "꽁치", 
                 scientific: "Cololabis saira", 
                 images: [
-                    "img/seafood/4_꽁치_1.png",
-                    "img/seafood/4_꽁치_2.jpg"
+                    this.baseUrl + "img/seafood/4_꽁치_1.png",
+                    this.baseUrl + "img/seafood/4_꽁치_2.jpg"
                 ]
             },
             { 
                 name: "넙치", 
                 scientific: "Paralichthys olivaceus", 
                 images: [
-                    "img/seafood/5_마찰넙치.png",
-                    "img/seafood/5_별넙치.png",
-                    "img/seafood/5_사량넙치.png",
-                    "img/seafood/5_점넙치.png",
-                    "img/seafood/5_풀넙치.png"
+                    this.baseUrl + "img/seafood/5_마찰넙치.png",
+                    this.baseUrl + "img/seafood/5_별넙치.png",
+                    this.baseUrl + "img/seafood/5_사량넙치.png",
+                    this.baseUrl + "img/seafood/5_점넙치.png",
+                    this.baseUrl + "img/seafood/5_풀넙치.png"
                 ]
             },
             { 
                 name: "농어", 
                 scientific: "Lateolabrax japonicus", 
                 images: [
-                    "img/seafood/6_농어.png",
-                    "img/seafood/6_점농어.png"
+                    this.baseUrl + "img/seafood/6_농어.png",
+                    this.baseUrl + "img/seafood/6_점농어.png"
                 ]
             },
             { 
                 name: "멸치", 
                 scientific: "Engraulis japonicus", 
                 images: [
-                    "img/seafood/12_멸치.jpeg"
+                    this.baseUrl + "img/seafood/12_멸치.jpeg"
                 ]
             },
             { 
                 name: "참돔", 
                 scientific: "Pagrus major", 
                 images: [
-                    "img/seafood/35_참돔.jpeg"
+                    this.baseUrl + "img/seafood/35_참돔.jpeg"
                 ]
             },
             { 
                 name: "꽃게", 
                 scientific: "Portunus trituberculatus", 
                 images: [
-                    "img/seafood/44_꽃게.jpeg"
+                    this.baseUrl + "img/seafood/44_꽃게.jpeg"
                 ]
             },
             { 
                 name: "대게", 
                 scientific: "Chionoecetes opilio", 
                 images: [
-                    "img/seafood/45_대게.jpeg"
+                    this.baseUrl + "img/seafood/45_대게.jpeg"
                 ]
             }
         ];
