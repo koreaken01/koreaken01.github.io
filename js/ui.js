@@ -7,6 +7,19 @@ class UIManager {
     constructor() {
         this.elements = this.initializeElements();
     }
+    
+    /**
+     * 현재 페이지의 base URL을 가져오는 함수
+     */
+    getBaseUrl() {
+        // GitHub Pages의 경우 repository name이 URL에 포함될 수 있음
+        const pathSegments = window.location.pathname.split('/');
+        if (pathSegments.length > 1 && pathSegments[1] !== '') {
+            // repository name이 있는 경우
+            return '/' + pathSegments[1] + '/';
+        }
+        return './';
+    }
 
     /**
      * DOM 요소 초기화
@@ -142,11 +155,14 @@ class UIManager {
             
             const fingerImg = document.createElement('img');
             fingerImg.className = 'finger-image';
-            fingerImg.src = `img/finger/${fingerImages[i]}`;
+            // base URL을 동적으로 가져와서 사용
+            const baseUrl = this.getBaseUrl();
+            fingerImg.src = `${baseUrl}img/finger/${fingerImages[i]}`;
             fingerImg.alt = `손가락 ${i + 1}`;
             
             // 이미지 로드 실패시 대체 표시
             fingerImg.onerror = function() {
+                console.warn('손가락 이미지 로드 실패:', this.src);
                 this.style.display = 'none';
                 const placeholder = document.createElement('div');
                 placeholder.style.width = '50px';
@@ -156,6 +172,8 @@ class UIManager {
                 placeholder.style.display = 'flex';
                 placeholder.style.alignItems = 'center';
                 placeholder.style.justifyContent = 'center';
+                placeholder.style.fontSize = '12px';
+                placeholder.style.fontWeight = 'bold';
                 placeholder.textContent = i + 1;
                 this.parentNode.appendChild(placeholder);
             };
@@ -202,7 +220,42 @@ class UIManager {
      * 이미지 업데이트
      */
     updateProductImage(imageUrl) {
-        this.elements.productImage.src = imageUrl;
+        const img = this.elements.productImage;
+        
+        // 이미지 로드 성공시
+        img.onload = function() {
+            this.style.display = 'block';
+        };
+        
+        // 이미지 로드 실패시
+        img.onerror = function() {
+            console.warn('이미지 로드 실패:', imageUrl);
+            this.style.display = 'none';
+            // 대체 텍스트 표시
+            const placeholder = document.createElement('div');
+            placeholder.style.width = '100%';
+            placeholder.style.height = '300px';
+            placeholder.style.background = '#f0f0f0';
+            placeholder.style.border = '2px dashed #ccc';
+            placeholder.style.borderRadius = '10px';
+            placeholder.style.display = 'flex';
+            placeholder.style.alignItems = 'center';
+            placeholder.style.justifyContent = 'center';
+            placeholder.style.fontSize = '18px';
+            placeholder.style.color = '#666';
+            placeholder.textContent = '이미지를 불러올 수 없습니다';
+            
+            // 기존 placeholder 제거
+            const existingPlaceholder = this.parentNode.querySelector('.image-placeholder');
+            if (existingPlaceholder) {
+                existingPlaceholder.remove();
+            }
+            
+            placeholder.className = 'image-placeholder';
+            this.parentNode.appendChild(placeholder);
+        };
+        
+        img.src = imageUrl;
     }
 
     /**
