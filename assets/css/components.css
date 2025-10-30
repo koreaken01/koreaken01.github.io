@@ -482,6 +482,119 @@
   text-decoration: underline;
 }
 
+/* ==========================================
+   CONTACT INFO
+   ========================================== */
+
+/* Contact Item Address Variant */
+.contact-item--address dd {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Address Location Container */
+.address-location {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: var(--spacing-md);
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.address-location:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+[data-theme="dark"] .address-location {
+  border-bottom-color: var(--color-border-medium);
+}
+
+/* Address Label (본사/공장) */
+.address-label {
+  grid-column: 1;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin: 0;
+  white-space: nowrap;
+  align-self: start;
+  padding-top: 2px;
+}
+
+/* Address Text */
+.address-location .address-text {
+  grid-column: 2;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Map Link in Address Location - Icon Only */
+.address-location .map-link {
+  grid-column: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-primary);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  margin: 0;
+  flex-shrink: 0;
+  align-self: start;
+}
+
+.address-location .map-link svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.address-location .map-link:hover {
+  background-color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+.address-location .map-link:hover svg {
+  color: #FFFFFF;
+}
+
+.address-location .map-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+[data-theme="dark"] .address-location .map-link {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-accent);
+}
+
+[data-theme="dark"] .address-location .map-link:hover {
+  background-color: var(--color-accent);
+}
+
+[data-theme="dark"] .address-location .map-link:hover svg {
+  color: var(--color-bg-primary);
+}
+
+/* Screen Reader Only Text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 
 /* ==========================================
    MAP PLACEHOLDER

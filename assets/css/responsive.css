@@ -13,6 +13,25 @@
 
 @media (max-width: 767px) {
   
+  /* Address Location - Keep 3 Column Layout on Mobile */
+  .address-location {
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+  }
+
+  .address-label {
+    padding-top: 2px;
+  }
+
+  .address-text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .address-location .map-link {
+    /* Keep in same position - grid column 3 */
+  }
+  
   /* Hero Section */
   .hero__title {
     font-size: 2rem; /* 32px */

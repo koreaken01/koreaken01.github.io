@@ -505,8 +505,8 @@
     </section>
     
     <!-- ==========================================
-         6. CONTACT SECTION
-         ========================================== -->
+     6. CONTACT SECTION
+     ========================================== -->
     <section class="contact section" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <!-- Section Header -->
@@ -517,59 +517,98 @@
           </p>
         </header>
         
-        <!-- Contact Grid -->
-        <div class="contact__grid">
+        <!-- Contact Content - Centered -->
+        <div class="contact__content">
           
-          <!-- Contact Info -->
-          <div class="contact__info">
-            <h3 class="contact__subtitle" data-i18n="contact.info.title">연락처</h3>
+          <!-- Contact Info Cards -->
+          <div class="contact__cards">
             
-            <div class="contact-item">
-              <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
-                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/>
-              </svg>
-              <div>
-                <dt data-i18n="contact.info.phone">전화</dt>
-                <dd><a href="tel:+82-70-8018-9079" data-i18n="contact.info.phoneValue">070-8018-9079</a></dd>
+            <!-- Card 1: Phone & Email -->
+            <div class="contact-card">
+              <div class="contact-card__items">
+                <!-- Phone -->
+                <div class="contact-item">
+                  <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/>
+                  </svg>
+                  <div>
+                    <dt data-i18n="contact.info.phone">전화</dt>
+                    <dd><a href="tel:07080189079" class="phone-link" data-i18n="contact.info.phoneValue">070-8018-9079</a></dd>
+                  </div>
+                </div>
+                
+                <!-- Email -->
+                <div class="contact-item">
+                  <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
+                  </svg>
+                  <div>
+                    <dt data-i18n="contact.info.email">이메일</dt>
+                    <dd><a href="mailto:sisobio@naver.com">sisobio@naver.com</a></dd>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div class="contact-item">
-              <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
-              </svg>
-              <div>
-                <dt data-i18n="contact.info.email">이메일</dt>
-                <dd><a href="mailto:sisobio@naver.com">sisobio@naver.com</a></dd>
+            <!-- Card 2: Address (Headquarters + Factory) -->
+            <div class="contact-card">
+              <div class="contact-item contact-item--address">
+                <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                </svg>
+                <div>
+                  <dt data-i18n="contact.info.address">주소</dt>
+                  <dd>
+                    <!-- Headquarters -->
+                    <div class="address-location">
+                      <p class="address-label" data-i18n="contact.info.addressOffice">(본사)</p>
+                      <p class="address-text" data-i18n="contact.address.office">강원특별자치도 고성군 죽왕면 송지호로 42, 3층 10호 (해양심층수산업 고성진흥원)</p>
+                      <a href="https://map.naver.com/v5/search/%EA%B0%95%EC%9B%90%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EA%B3%A0%EC%84%B1%EA%B5%B0%20%EC%A3%BD%EC%99%95%EB%A9%B4%20%EC%86%A1%EC%A7%80%ED%98%B8%EB%A1%9C%2042" 
+                         target="_blank" 
+                         rel="noopener noreferrer" 
+                         class="map-link"
+                         aria-label="본사 위치 지도에서 보기">
+                        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                          <path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z" fill="currentColor"/>
+                        </svg>
+                        <span class="sr-only" data-i18n="contact.info.viewMap">지도에서 보기</span>
+                      </a>
+                    </div>
+                    
+                    <!-- Factory -->
+                    <div class="address-location">
+                      <p class="address-label" data-i18n="contact.info.addressFactory">(공장)</p>
+                      <p class="address-text" data-i18n="contact.address.factory">강원특별자치도 강릉시 사임당로 641-28, 2층 205호 (가톨릭관동대학교 R&B Park)</p>
+                      <a href="https://map.naver.com/v5/search/%EA%B0%95%EC%9B%90%ED%8A%B5%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EA%B0%95%EB%A6%89%EC%8B%9C%20%EC%82%AC%EC%9E%84%EB%8B%B9%EB%A1%9C%20641-28" 
+                         target="_blank" 
+                         rel="noopener noreferrer" 
+                         class="map-link"
+                         aria-label="공장 위치 지도에서 보기">
+                        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                          <path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z" fill="currentColor"/>
+                        </svg>
+                        <span class="sr-only" data-i18n="contact.info.viewMap">지도에서 보기</span>
+                      </a>
+                    </div>
+                  </dd>
+                </div>
               </div>
             </div>
             
-            <div class="contact-item">
-              <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
-              </svg>
-              <div>
-                <dt data-i18n="contact.info.address">주소</dt>
-                <dd data-i18n="contact.info.addressValue">강원특별자치도 고성군 죽왕면 송지호로 42 3층 10호 (해양심층수산업 고성진흥원)</dd>
+            <!-- Card 4: Business Hours -->
+            <div class="contact-card">
+              <div class="contact-item">
+                <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                  <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" fill="currentColor"/>
+                </svg>
+                <div>
+                  <dt data-i18n="contact.info.hours">운영시간</dt>
+                  <dd data-i18n="contact.info.hoursValue">평일 09:00 - 18:00</dd>
+                </div>
               </div>
             </div>
             
-            <div class="contact-item">
-              <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
-                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" fill="currentColor"/>
-              </svg>
-              <div>
-                <dt data-i18n="contact.info.hours">운영시간</dt>
-                <dd data-i18n="contact.info.hoursValue">평일 09:00 - 18:00</dd>
-              </div>
-            </div>
           </div>
-          
-          <!-- Map Image -->
-          <div class="contact__map">
-            <img src="/assets/images/map/map_kr.webp" alt="시소바이오 위치 지도" width="480" height="480" loading="lazy">
-          </div>
-          
         </div>
       </div>
     </section>
@@ -623,13 +662,14 @@
   <script src="/assets/js/nav.js" defer></script>
   
   <!-- Google Analytics (Replace with actual ID) -->
+<!--   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
-  </script>
+  </script> -->
 
 </body>
 </html>

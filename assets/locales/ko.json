@@ -323,7 +323,9 @@
       "phoneValue": "070-8018-9079",
       "email": "이메일",
       "address": "주소",
-      "addressValue": "강원도 고성군 죽왕면 송지호로 42 3층 10호",
+      "addressOffice": "(본사)",
+      "addressFactory": "(공장)",
+      "viewMap": "지도에서 보기",
       "hours": "운영시간",
       "hoursValue": "평일 09:00 - 18:00",
       "website": "www.sisobio.com",
@@ -331,17 +333,14 @@
       "established": "2021.11.24"
     },
     "address": {
-      "office": "강원특별자치도 고성군 죽왕면 송지호로 42 3층 10호 (해양심층수산업 고성진흥원)",
-      "officeEn": "3F, 10-42 Songjiho-ro, Jugwang-myeon, Goseong-gun, Gangwon Special Self-Governing Province (Deep Sea Water Industry Goseong Promotion Agency)",
-      "factory": "강원특별자치도 강릉시 사임당로 641-28 2층 205호 (가톨릭관동대학교 R&B Park)",
-      "factoryEn": "2F-205, 641-28 Saimdang-ro, Gangneung-si, Gangwon Special Self-Governing Province (Catholic Kwandong University R&B Park)"
+      "office": "강원특별자치도 고성군 죽왕면 송지호로 42, 3층 10호 (해양심층수산업 고성진흥원)",
+      "officeMap": "https://map.naver.com/v5/search/%EA%B0%95%EC%9B%90%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EA%B3%A0%EC%84%B1%EA%B5%B0%20%EC%A3%BD%EC%99%95%EB%A9%B4%20%EC%86%A1%EC%A7%80%ED%98%B8%EB%A1%9C%2042",
+      "factory": "강원특별자치도 강릉시 사임당로 641-28, 2층 205호 (가톨릭관동대학교 R&B Park)",
+      "factoryMap": "https://map.naver.com/v5/search/%EA%B0%95%EC%9B%90%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EA%B0%95%EB%A6%89%EC%8B%9C%20%EC%82%AC%EC%9E%84%EB%8B%B9%EB%A1%9C%20641-28"
     },
     "business": {
       "type": "제조업",
       "category": "해양심층수 소금 제조업"
-    },
-    "map": {
-      "placeholder": "지도 영역 (Google Maps API 연동 필요)"
     }
   },
   "footer": {
@@ -349,7 +348,7 @@
     "description": "청정 동해 해양심층수로 만드는 프리미엄 소금",
     "ceo": "대표: 천경도",
     "businessNumber": "사업자등록번호: 406-04-24945",
-    "address": "주소: 강원특별자치도 고성군 죽왕면 송지호로 42 3층 10호 (해양심층수산업 고성진흥원)",
+    "address": "주소: 강원특별자치도 고성군 죽왕면 송지호로 42, 3층 10호 (해양심층수산업 고성진흥원)",
     "phone": "전화: 070-8018-9079",
     "copyright": "© 2025 SISOBIO All rights reserved.",
     "quickLinks": {

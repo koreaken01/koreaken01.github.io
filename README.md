@@ -229,6 +229,4 @@ Copyright © 2025 Siso Bio. All rights reserved.
 
 ---
 
-**개발**: 이개발 (Frontend Developer)  
-**디자인**: 박디자인 (UI/UX Designer)  
-**기획**: 김기획 (Project Manager)
+**제작**: 유비니즈 주식회사

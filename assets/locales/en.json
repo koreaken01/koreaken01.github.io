@@ -320,10 +320,12 @@
     "info": {
       "title": "Contact Information",
       "phone": "Phone",
-      "phoneValue": "070-8018-9079",
+      "phoneValue": "+82-70-8018-9079",
       "email": "Email",
       "address": "Address",
-      "addressValue": "3F, 10, 42, Songjiho-ro, Jugwang-myeon, Goseong-gun, Gangwon-do, 24747, Rep. of KOREA",
+      "addressOffice": "(Headquarters)",
+      "addressFactory": "(Factory)",
+      "viewMap": "View on Map",
       "hours": "Business Hours",
       "hoursValue": "Weekdays 09:00 - 18:00",
       "website": "www.sisobio.com",
@@ -331,17 +333,14 @@
       "established": "November 24, 2021"
     },
     "address": {
-      "office": "강원특별자치도 고성군 죽왕면 송지호로 42 3층 10호 (해양심층수산업 고성진흥원)",
-      "officeEn": "3F, 10, 42, Songjiho-ro, Jugwang-myeon, Goseong-gun, Gangwon-do, 24747, Rep. of KOREA",
-      "factory": "강원특별자치도 강릉시 사임당로 641-28 2층 205호 (가톨릭관동대학교 R&B Park)",
-      "factoryEn": "2F-205, 641-28 Saimdang-ro, Gangneung-si, Gangwon Special Self-Governing Province (Catholic Kwandong University R&B Park)"
+      "office": "3F, 10, 42, Songjiho-ro, Jugwang-myeon, Goseong-gun, Gangwon-do, 24747, Rep. of KOREA (Deep Sea Water Industry Goseong Promotion Agency)",
+      "officeMap": "https://map.naver.com/v5/search/%EA%B0%95%EC%9B%90%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EA%B3%A0%EC%84%B1%EA%B5%B0%20%EC%A3%BD%EC%99%95%EB%A9%B4%20%EC%86%A1%EC%A7%80%ED%98%B8%EB%A1%9C%2042",
+      "factory": "2F, 205, 641-28, Saimdang-ro, Gangneung-si, Gangwon-do, 25451, Rep. of KOREA (Catholic Kwandong University R&B Park)",
+      "factoryMap": "https://map.naver.com/v5/search/%EA%B0%95%EC%9B%90%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EA%B0%95%EB%A6%89%EC%8B%9C%20%EC%82%AC%EC%9E%84%EB%8B%B9%EB%A1%9C%20641-28"
     },
     "business": {
       "type": "Manufacturing",
       "category": "Deep Sea Water Salt Manufacturing"
-    },
-    "map": {
-      "placeholder": "Map area (Google Maps API integration required)"
     }
   },
   "footer": {
@@ -349,7 +348,7 @@
     "description": "Premium salt made from pure East Sea deep-sea water",
     "ceo": "CEO: Kyeong-Do Chun",
     "businessNumber": "Business No: 406-04-24945",
-    "address": "Address: 3F, 10, 42, Songjiho-ro, Jugwang-myeon, Goseong-gun, Gangwon-do, 24747, Rep. of KOREA",
+    "address": "Address: 3F, 10, 42, Songjiho-ro, Jugwang-myeon, Goseong-gun, Gangwon-do, 24747, Rep. of KOREA (Deep Sea Water Industry Goseong Promotion Agency)",
     "phone": "Phone: 070-8018-9079",
     "copyright": "© 2025 SISOBIO All rights reserved.",
     "quickLinks": {

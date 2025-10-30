@@ -189,8 +189,7 @@ class I18nManager {
    */
   renderDynamicContent() {
     this.renderTimeline();
-    this.renderContactInfo();
-    this.renderFooterInfo();
+    this.renderContactInfo();    
   }
   
   /**
@@ -264,8 +263,16 @@ class I18nManager {
     contactPhoneLinks.forEach(link => {
       if (phoneValue) {
         // Clean phone number for href (remove hyphens)
-        const cleanPhone = phoneValue.replace(/-/g, '');
-        link.href = `tel:+82${cleanPhone}`;
+        const cleanPhone = phoneValue.replace(/-/g, '');        
+
+        // Apply different tel: format based on language
+        if (this.currentLanguage === 'ko') {
+          // Korean: tel:07080189079 (domestic format)
+          link.href = `tel:${cleanPhone}`;
+        } else {
+          // English: tel:+8207080189079 (international format)
+          link.href = `tel:+82${cleanPhone}`;
+        }
         // Do NOT set textContent here - it's already handled by data-i18n="contact.info.phoneValue"
       }
     });
@@ -278,28 +285,6 @@ class I18nManager {
     }
     
     console.log('Contact info updated');
-  }
-  
-  /**
-   * Render Footer information dynamically
-   */
-  renderFooterInfo() {
-    const footerPhone = this.getTranslation('footer.phone');
-    const address = this.getTranslation('footer.address');
-    
-    // Update footer phone number
-    const footerPhoneLinks = document.querySelectorAll('.footer__links-column a[href^="tel:"]');
-    footerPhoneLinks.forEach(link => {
-      if (footerPhone) {
-        // Extract just the phone number from "전화: 070-8018-9079"
-        const phoneNumber = footerPhone.replace(/[^0-9-]/g, '');
-        const cleanPhone = phoneNumber.replace(/-/g, '');
-        link.href = `tel:+82${cleanPhone}`;
-        link.textContent = phoneNumber;
-      }
-    });
-    
-    console.log('Footer info updated');
   }
   
   /**
