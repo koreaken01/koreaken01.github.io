@@ -64,10 +64,16 @@ class AuctionSimulator {
      * 시뮬레이션 시작
      */
     startSimulation() {
+        // 데이터가 로드되지 않았으면 기본 데이터 로드
+        if (this.dataManager.fishItems.length === 0) {
+            console.log('데이터가 없어 기본 데이터를 로드합니다.');
+            this.dataManager.loadDefaultData();
+        }
+
         this.electronicCount = parseInt(this.uiManager.elements.electronicCount.value);
         this.manualCount = parseInt(this.uiManager.elements.manualCount.value);
         this.totalQuestions = this.electronicCount + this.manualCount;
-        
+
         this.uiManager.showMainScreen();
         this.startNewQuestion();
     }

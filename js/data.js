@@ -20,13 +20,24 @@ class DataManager {
      * 현재 페이지의 base URL을 가져오는 함수
      */
     getBaseUrl() {
-        // GitHub Pages의 경우 repository name이 URL에 포함될 수 있음
-        const pathSegments = window.location.pathname.split('/');
-        if (pathSegments.length > 1 && pathSegments[1] !== '') {
-            // repository name이 있는 경우
-            return '/' + pathSegments[1] + '/';
+        let path = window.location.pathname;
+
+        // .html 파일로 끝나면 파일명 제거
+        if (path.endsWith('.html')) {
+            path = path.substring(0, path.lastIndexOf('/') + 1);
         }
-        return './';
+
+        // 루트 경로이면 상대 경로 사용
+        if (path === '/' || path === '') {
+            return './';
+        }
+
+        // 슬래시로 끝나지 않으면 추가
+        if (!path.endsWith('/')) {
+            path += '/';
+        }
+
+        return path;
     }
 
     /**
@@ -172,6 +183,12 @@ class DataManager {
      * 랜덤 품목 선택
      */
     getRandomItem(usedItems) {
+        // fishItems가 비어있으면 null 반환
+        if (this.fishItems.length === 0) {
+            console.error('품목 데이터가 없습니다.');
+            return null;
+        }
+
         let availableItems = this.fishItems.filter(item => !usedItems.includes(item.name));
         if (availableItems.length === 0) {
             availableItems = this.fishItems;
